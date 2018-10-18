@@ -6,7 +6,8 @@ import Email from "./Email";
 import Phone from "./Phone";
 import Salary from "./Salary";
 import Final from "./Final";
-import { resolve } from "url";
+import List from "./List";
+
 
 
 
@@ -22,7 +23,8 @@ class Form extends Component {
         email: "",
         phone: "",
         salary: ""
-      }
+      },
+      loading: false
     };
 
     this._nextPage = this._nextPage.bind(this);
@@ -40,7 +42,9 @@ class Form extends Component {
           <div className="inner-bar" style={{width: (this.state.page-1)*25 + "%"}}>
           </div>
         </div>}
-        
+        <div className="container">
+        {this.state.page > 0 && this.state.page < 6 ? <List
+        page={this.state.page}/> : ""}
         {this.state.page === 0 && <Start nextPage={this._nextPage} />}
         {this.state.page === 1 && (
           <Name
@@ -80,8 +84,12 @@ class Form extends Component {
             startAgain={this._startAgain}
             tenant={this.state.tenant}
             submit={this._submit}
+            handleInputChange={this._handleInputChange}
           />
         )}
+        {this.state.loading && <h1>Loading</h1>}
+        {!this.state.loading && this.state.page === 6 ? <h1>Finished</h1> : ""}
+        </div>
       </div>
     );
   }
@@ -105,6 +113,10 @@ class Form extends Component {
   }
 
   _submit() {
+    this.setState({
+      loading: true,
+      page: 6
+    })
     return new Promise((resolve, reject) => {
       setTimeout(resolve, 3000, this.state.tenant);
     })
@@ -118,6 +130,13 @@ class Form extends Component {
         value = value + " - "
       }
     }
+
+    if(key === "loading") {
+      this.setState({
+        loading: value
+      })
+    }
+
     this.setState({
       tenant: { ...this.state.tenant, [key]: value }
     });

@@ -16,7 +16,9 @@ const Name = ({nextPage, previousPage, handleInputChange, firstName, lastName}) 
             
             <div className="control-container">
             <button className="button" onClick={() => previousPage()}>Back</button>
-            <button className="button" onClick={() => nextPage()}>Next</button>
+            <button
+            className={firstName.length && lastName.length ? "button" : "button inactive"}
+            onClick={() => nextPage()}>Next</button>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Final = ({tenant, startAgain, submit}) => {
+const Final = ({tenant, startAgain, submit, handleInputChange}) => {
     return (
         <div className="form-container">
             <p>Name : {tenant.firstName + " " + tenant.lastName}</p>
@@ -9,7 +9,7 @@ const Final = ({tenant, startAgain, submit}) => {
             <p>Salary : {tenant.salary}</p>
             <div className="control-container">
             <button className="button" onClick={() => startAgain()}>Something wrong? Start again!</button>
-            <button className="button" onClick={() => submit().then(result => console.log("submited"))}>Everything alright? Submit your profile!</button>
+            <button className="button" onClick={() => submit().then(result => handleInputChange("loading", false))}>Everything alright? Submit your profile!</button>
             </div>
         </div>
     );
