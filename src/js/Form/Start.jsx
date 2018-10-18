@@ -2,7 +2,7 @@ import React from "react";
 
 const Start = ({nextPage}) => {
   return (
-    <div className="form-container">
+    <div className="form-container border-all">
       <p>
         To find a better home for you and your family, we would like to know
         more about you

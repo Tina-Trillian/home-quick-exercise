@@ -38,10 +38,13 @@ class Form extends Component {
     return (
       <div>
         <h1>Hello {this.state.page < 2 ? "New Tenant" : this.state.tenant.firstName + " " + this.state.tenant.lastName}</h1>
-        {this.state.page > 0 && <div className="outer-bar">
+        {this.state.page > 0 && this.state.page < 6 ?
+        <React.Fragment>
+        <div className="outer-bar">
           <div className="inner-bar" style={{width: (this.state.page-1)*25 + "%"}}>
           </div>
-        </div>}
+        </div>
+        </React.Fragment> : ""}
         <div className="container">
         {this.state.page > 0 && this.state.page < 6 ? <List
         page={this.state.page}/> : ""}
@@ -85,10 +88,10 @@ class Form extends Component {
             tenant={this.state.tenant}
             submit={this._submit}
             handleInputChange={this._handleInputChange}
+            previousPage={this._previousPage}
           />
         )}
-        {this.state.loading && <h1>Loading</h1>}
-        {!this.state.loading && this.state.page === 6 ? <h1>Finished</h1> : ""}
+        {this.state.loading && <h1>Thank you for the information!</h1>}
         </div>
       </div>
     );
@@ -117,6 +120,7 @@ class Form extends Component {
       loading: true,
       page: 6
     })
+    //mockup axios call to simulate sending data to backend
     return new Promise((resolve, reject) => {
       setTimeout(resolve, 3000, this.state.tenant);
     })
@@ -127,13 +131,19 @@ class Form extends Component {
 
     if(key === "phone") {
       if(value.length === 4) {
-        value = value + " - "
+        value = value + " "
       }
     }
 
     if(key === "loading") {
       this.setState({
         loading: value
+      })
+    }
+
+    if(key === "page") {
+      this.setState({
+        page: value
       })
     }
 

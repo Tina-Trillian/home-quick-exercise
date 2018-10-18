@@ -2,7 +2,6 @@ import React from "react";
 
 const Salary = ({ nextPage, previousPage, handleInputChange, salary }) => {
   return (
-    <div>
       <div className="form-container">
         <div>
         <input
@@ -65,7 +64,6 @@ const Salary = ({ nextPage, previousPage, handleInputChange, salary }) => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 

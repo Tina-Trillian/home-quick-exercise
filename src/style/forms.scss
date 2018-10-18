@@ -1,7 +1,11 @@
 body {
+
+  color: rgb(87, 86, 86);
+
   .button {
     padding: 10px;
     margin: 10px;
+    font-weight: bold;
     border-radius: 5px;
     border: none;
     background-color: rgb(9, 71, 9);
@@ -11,23 +15,25 @@ body {
   .container {
     display: flex;
     justify-content: center;
+    height: 50vh;
   }
 
   .list {
-    background-color: white;
+    background-color: rgb(230, 230, 230);
+    
 
     .list-item {
-      border: 1px solid black;
+      // border: 1px solid black;
       padding: 15px 30px;
       text-align: center;
     }
 
     .visited {
-      background-color: grey;
+      background-color: rgb(190, 190, 190);
     }
 
     .active {
-      background-color: green;
+      box-shadow:inset 0px 0px 0px 5px rgba(0, 128, 0, 0.342);
     }
   }
 
@@ -39,7 +45,7 @@ body {
   }
 
   .inner-bar {
-    background-color: rgb(168, 168, 168);
+    background-color: rgba(0, 128, 0, 0.342);
     height: 100%;
   }
 
@@ -47,17 +53,25 @@ body {
     text-align: center;
   }
 
+
   .form-container {
     padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px rgb(112, 112, 112);
+    border-radius: 0px 5px 5px 0px;
+    // box-shadow: 0px 0px 20px rgb(112, 112, 112);
+    border: 2px solid rgb(230, 230, 230);
+    border-left: none;
     display: flex;
     flex-direction: column;
     width: 60%;
+    height: 100%;
 
     input {
       padding: 10px;
       margin: 10px;
+    }
+
+    p {
+      margin-top: 0px;
     }
 
     .inactive {
@@ -69,5 +83,10 @@ body {
       display: flex;
       justify-content: center;
     }
+  }
+
+  .border-all {
+    border: 2px solid rgb(230, 230, 230);
+    border-radius: 5px;
   }
 }

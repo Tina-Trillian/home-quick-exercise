@@ -11,7 +11,7 @@ const Phone = ({nextPage, previousPage, handleInputChange, phone}) => {
             <div className="control-container">
             <button className="button" onClick={() => previousPage()}>Back</button>
             <button
-            className={phone.length > 12 ? "button" : "button inactive"}
+            className={phone.length > 10 ? "button" : "button inactive"}
             onClick={() => nextPage()}>Next</button>
             </div>
         </div>
