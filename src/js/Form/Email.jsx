@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Email = ({nextPage, previousPage, handleInputChange, email}) => {
+const Email = ({nextPage, previousPage, handleInputChange, email, lang}) => {
     return (
         <div className="form-container">
             <input
@@ -9,11 +9,12 @@ const Email = ({nextPage, previousPage, handleInputChange, email}) => {
             placeholder="Email"
             onChange={(evt) => handleInputChange("email", evt.target.value)}/>
           <div className="control-container">
-            <button className="button" onClick={() => previousPage()}>Back</button>
+            <button className="button" onClick={() => previousPage()}>
+            {lang === "ENG" ? "Back" : "Zurück"}</button>
             <button
             className={email.includes("@") && email.includes(".") ? "button" : "button inactive"}
             onClick={() => nextPage()}
-            >Next</button>
+            >{lang === "ENG" ? "Next" : "Weiter"}</button>
             </div>
         </div>
     );

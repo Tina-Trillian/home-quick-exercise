@@ -24,7 +24,8 @@ class Form extends Component {
         phone: "",
         salary: ""
       },
-      loading: false
+      loading: false,
+      lang: "ENG"
     };
 
     this._nextPage = this._nextPage.bind(this);
@@ -33,6 +34,7 @@ class Form extends Component {
     this._handleInputChange = this._handleInputChange.bind(this);
     this._submit = this._submit.bind(this);
     this._resetTenant = this._resetTenant.bind(this);
+    this._toggleLang = this._toggleLang.bind(this)
 
   }
 
@@ -40,7 +42,10 @@ class Form extends Component {
 
     return (
       <div>
-        <h1>Hello {this.state.page < 2 ? "New Tenant" : this.state.tenant.firstName + " " + this.state.tenant.lastName}</h1>
+         <button
+        className="button language-btn"
+        onClick={this._toggleLang}>{this.state.lang}</button>
+        <h1>{this.state.lang === "ENG" ? "Hello" : "Hallo"} {this.state.page < 2 ? "New Tenant" : this.state.tenant.firstName + " " + this.state.tenant.lastName}</h1>
         {this.state.page > 0 && this.state.page < 6 ?
         <React.Fragment>
         <div className="outer-bar">
@@ -50,8 +55,11 @@ class Form extends Component {
         </React.Fragment> : ""}
         <div className="container">
         {this.state.page > 0 && this.state.page < 6 ? <List
-        page={this.state.page}/> : ""}
-        {this.state.page === 0 && <Start nextPage={this._nextPage} />}
+        page={this.state.page}
+        lang={this.state.lang}/> : ""}
+        {this.state.page === 0 && <Start
+          nextPage={this._nextPage}
+          lang={this.state.lang} />}
         {this.state.page === 1 && (
           <Name
             nextPage={this._nextPage}
@@ -59,6 +67,7 @@ class Form extends Component {
             handleInputChange={this._handleInputChange}
             firstName={this.state.tenant.firstName}
             lastName={this.state.tenant.lastName}
+            lang={this.state.lang}
           />
         )}
         {this.state.page === 2 && (
@@ -67,6 +76,7 @@ class Form extends Component {
             previousPage={this._previousPage}
             handleInputChange={this._handleInputChange}
             email={this.state.tenant.email}
+            lang={this.state.lang}
           />
         )}
         {this.state.page === 3 && (
@@ -75,6 +85,7 @@ class Form extends Component {
             previousPage={this._previousPage}
             handleInputChange={this._handleInputChange}
             phone={this.state.tenant.phone}
+            lang={this.state.lang}
           />
         )}
         {this.state.page === 4 && (
@@ -83,6 +94,7 @@ class Form extends Component {
             previousPage={this._previousPage}
             handleInputChange={this._handleInputChange}
             salary={this.state.tenant.salary}
+            lang={this.state.lang}
           />
         )}
          {this.state.page === 5 && (
@@ -93,9 +105,11 @@ class Form extends Component {
             handleInputChange={this._handleInputChange}
             previousPage={this._previousPage}
             resetTenant={this._resetTenant}
+            lang={this.state.lang}
           />
         )}
-        {this.state.loading && <h1>Thank you for the information!</h1>}
+        {this.state.loading && <h1>
+          {this.state.lang === "ENG" ? "Thank you for the information!" : "Danke für die Informationen!"}</h1>}
         </div>
       </div>
     );
@@ -117,6 +131,20 @@ class Form extends Component {
     this.setState({
       page: 1
     });
+  }
+
+  _toggleLang() {
+    if (this.state.lang === "ENG") {
+      this.setState({
+        lang: "GER"
+      })
+    } 
+
+    if (this.state.lang === "GER") {
+      this.setState({
+        lang: "ENG"
+      })
+    } 
   }
 
   _resetTenant() {

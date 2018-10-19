@@ -1,6 +1,6 @@
 import React from "react";
 
-const Salary = ({ nextPage, previousPage, handleInputChange, salary }) => {
+const Salary = ({ nextPage, previousPage, handleInputChange, salary, lang }) => {
   return (
       <div className="form-container">
         <div>
@@ -11,7 +11,7 @@ const Salary = ({ nextPage, previousPage, handleInputChange, salary }) => {
           checked={salary === "0 - 1.000"}
           onChange={evt => handleInputChange("salary", evt.target.value)}
         />
-        <label> 0 - 1.000</label>
+        <label>0 - 1.000</label>
         </div>
         <div>
         <input
@@ -51,16 +51,16 @@ const Salary = ({ nextPage, previousPage, handleInputChange, salary }) => {
           checked={salary === "Mehr als 4.000"}
           onChange={evt => handleInputChange("salary", evt.target.value)}
         />
-        <label> Mehr als 4.000</label>
+        <label>{lang === "ENG" ? "More than 4.000" : " Mehr als 4.000"}</label>
         </div>
         <div className="control-container">
           <button className="button" onClick={() => previousPage()}>
-            Back
+          {lang === "ENG" ? "Back" : "Zurück"}
           </button>
           <button
           className={salary.length ? "button" : "button inactive"}
           onClick={() => nextPage()}>
-            Next
+            {lang === "ENG" ? "Next" : "Weiter"}
           </button>
         </div>
       </div>

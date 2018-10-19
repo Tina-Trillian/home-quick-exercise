@@ -1,6 +1,6 @@
 import React from 'react';
 
-const List = ({page}) => {
+const List = ({page, lang}) => {
     return (
         <div className="list">
             <div
@@ -12,13 +12,17 @@ const List = ({page}) => {
             ${page === 2 ? "active" : ""}`}>Email</div>
             <div className={`list-item
             ${page > 3 ? "visited" : ""}
-            ${page === 3 ? "active" : ""}`}>Phone</div>
+            ${page === 3 ? "active" : ""}`}>
+            {lang === "ENG" ? "Phone" : "Telefon"}</div>
             <div className={`list-item
             ${page > 4 ? "visited" : ""}
-            ${page === 4 ? "active" : ""}`}>Salary</div>
+            ${page === 4 ? "active" : ""}`}>
+            {lang === "ENG" ? "Salary" : "Einkommen"}</div>
             <div className={`list-item
             ${page > 5 ? "visited" : ""}
-            ${page === 5 ? "active" : ""}`}>Summary</div>
+            ${page === 5 ? "active" : ""}`}>
+            {lang === "ENG" ? "Summary" : "Überblick"}
+            </div>
         </div>
     );
 };
