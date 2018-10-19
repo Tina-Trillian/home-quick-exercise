@@ -15,3 +15,8 @@ To start the server-api and the react-app:
 `$ npm run dev` 
 
 Server runs on PORT 1234
+
+![Logo](
+      https://drive.google.com/file/d/1VJP_vnj9l0OXnykIX36Iokt4R-mo1ZD0/view?usp=sharing
+)
+
