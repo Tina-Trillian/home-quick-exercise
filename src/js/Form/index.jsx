@@ -32,9 +32,12 @@ class Form extends Component {
     this._startAgain = this._startAgain.bind(this)
     this._handleInputChange = this._handleInputChange.bind(this);
     this._submit = this._submit.bind(this);
+    this._resetTenant = this._resetTenant.bind(this);
+
   }
 
   render() {
+
     return (
       <div>
         <h1>Hello {this.state.page < 2 ? "New Tenant" : this.state.tenant.firstName + " " + this.state.tenant.lastName}</h1>
@@ -89,6 +92,7 @@ class Form extends Component {
             submit={this._submit}
             handleInputChange={this._handleInputChange}
             previousPage={this._previousPage}
+            resetTenant={this._resetTenant}
           />
         )}
         {this.state.loading && <h1>Thank you for the information!</h1>}
@@ -115,20 +119,32 @@ class Form extends Component {
     });
   }
 
+  _resetTenant() {
+    this.setState({
+      tenant: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        salary: ""
+      }
+    })
+  }
+
   _submit() {
     this.setState({
       loading: true,
       page: 6
     })
-    //mockup axios call to simulate sending data to backend
+    //mockup axios call to simulate sending data to backend, takes 3 seconds
     return new Promise((resolve, reject) => {
       setTimeout(resolve, 3000, this.state.tenant);
     })
   }
 
-  
+  //handles input changes for the form inputs and allows state changes
+  //triggerd in the components
   _handleInputChange(key, value) {
-
     if(key === "phone") {
       if(value.length === 4) {
         value = value + " "

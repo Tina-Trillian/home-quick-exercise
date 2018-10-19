@@ -1,5 +1,5 @@
 body {
-
+  margin-top: 50px;
   color: rgb(87, 86, 86);
 
   .button {
@@ -16,16 +16,44 @@ body {
     display: flex;
     justify-content: center;
     height: 50vh;
+    width: 90%;
+    margin: 30px 5%;
+
+    //moves the list to the top on a smaller screen
+    @media (max-width: 812px) {
+      flex-direction: column;
+      height: auto;
+    }
+
   }
 
   .list {
     background-color: rgb(230, 230, 230);
-    
+    width: 30%;
+
+    //list stretches over whole width, flex-wrap for even smaller screen
+    @media (max-width: 812px) {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
 
     .list-item {
-      // border: 1px solid black;
       padding: 15px 30px;
       text-align: center;
+
+      @media (max-width: 812px) {
+        width: 20%;
+        padding: 15px 0px;
+       
+      }
+
+      //makes to rows on smaller screen
+      @media (max-width: 667px) {
+        width: 33.33%;
+        padding: 15px 0px;
+        
+      }
     }
 
     .visited {
@@ -57,13 +85,19 @@ body {
   .form-container {
     padding: 40px;
     border-radius: 0px 5px 5px 0px;
-    // box-shadow: 0px 0px 20px rgb(112, 112, 112);
     border: 2px solid rgb(230, 230, 230);
     border-left: none;
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 70%;
     height: 100%;
+
+    @media (max-width: 812px) {
+      width: 100%;
+      border-left: 2px solid rgb(230, 230, 230);
+      border-top: none;
+      border-radius: 0px 0px 5px 5px;
+     }
 
     input {
       padding: 10px;
@@ -81,7 +115,7 @@ body {
 
     .control-container {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
     }
   }
 
