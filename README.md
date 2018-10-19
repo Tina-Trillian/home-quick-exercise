@@ -1,4 +1,3 @@
-# Tenant Form for home.ht
 
 ## Tech
 
@@ -8,7 +7,7 @@ To clone this repo:
 
 `$ git clone https://github.com/Tina-Trillian/home-quick-exercise`
 
-To start the server-api and the react-app:
+To start the react-app:
 
 `$ cd home-quick-exercise`  
 `$ npm install`  
@@ -16,7 +15,15 @@ To start the server-api and the react-app:
 
 Server runs on PORT 1234
 
-![Logo](
-      https://drive.google.com/file/d/1VJP_vnj9l0OXnykIX36Iokt4R-mo1ZD0/view?usp=sharing
-)
+# Tenant Form for home.ht
+
+<img src="/src/assets/screenshot.png" width="400">
+
+This is a React Form, where the User clicks through multiple pages to enter their information.
+The design is responsive and adapts to the screen size.
+The information gets stored in the state and can be send to an api of your choice.
+        
+      
+
+
 
